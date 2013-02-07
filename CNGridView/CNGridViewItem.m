@@ -182,13 +182,13 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
 
     if (self.currentLayout.visibleContentMask & (CNGridViewItemVisibleContentImage | CNGridViewItemVisibleContentTitle)) {
         imageRect = NSMakeRect(((NSWidth(contentRect) - self.itemImage.size.width) / 2) + self.currentLayout.contentInset,
-                               self.currentLayout.contentInset + 10,
+                               self.currentLayout.contentInset + 5,
                                self.itemImage.size.width,
                                self.itemImage.size.height);
         [self.itemImage drawInRect:imageRect fromRect:srcRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
 
         textRect = NSMakeRect(contentRect.origin.x + 3,
-                              NSHeight(contentRect) - 36,
+                              NSHeight(contentRect) - 30,
                               NSWidth(contentRect) - 6,
                               30);
         
