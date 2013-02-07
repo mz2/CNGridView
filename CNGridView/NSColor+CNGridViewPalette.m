@@ -83,6 +83,8 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Generic Stuff
 
+
+#if __MAC_OS_X_VERSION_MAX_ALLOWED <= 1070
 /** found at: https://gist.github.com/707921 */
 - (CGColorRef)CGColor
 {
@@ -101,6 +103,6 @@
     if (CGColor == NULL) return nil;
     return [NSColor colorWithCIColor:[CIColor colorWithCGColor:CGColor]];
 }
-
+#endif
 
 @end

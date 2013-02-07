@@ -65,7 +65,9 @@
 + (NSColor *)selectionFrameColor;
 
 
+#if __MAC_OS_X_VERSION_MAX_ALLOWED <= 1070
 - (CGColorRef)CGColor;
 + (NSColor *)colorWithCGColor:(CGColorRef)CGColor;
+#endif
 
 @end
