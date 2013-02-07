@@ -32,6 +32,7 @@
 #import "NSColor+CNGridViewPalette.h"
 #import "CNGridViewItemLayout.h"
 
+#import "NSString_Extensions.h"
 
 #if !__has_feature(objc_arc)
 #error "Please use ARC for compiling this file."
@@ -187,10 +188,11 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
         [self.itemImage drawInRect:imageRect fromRect:srcRect operation:NSCompositeSourceOver fraction:1.0 respectFlipped:YES hints:nil];
 
         textRect = NSMakeRect(contentRect.origin.x + 3,
-                              NSHeight(contentRect) - 20,
+                              NSHeight(contentRect) - 36,
                               NSWidth(contentRect) - 6,
-                              14);
-        [self.itemTitle drawInRect:textRect withAttributes:self.currentLayout.itemTitleTextAttributes];
+                              30);
+        
+        [[self.itemTitle stringByTrimmingToLength:50 truncate:YES] drawInRect:textRect withAttributes:self.currentLayout.itemTitleTextAttributes];
     }
 
     else if (self.currentLayout.visibleContentMask & CNGridViewItemVisibleContentImage) {
