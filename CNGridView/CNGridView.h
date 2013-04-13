@@ -33,7 +33,10 @@
 #import "CNGridViewDelegate.h"
 #import "CNGridViewItem.h"
 
-
+typedef NS_ENUM(NSInteger, CNGridViewModifierFlag) {
+    CNGridViewModifierFlagNone                      = 0,
+    CNGridViewModifierFlagCommandKeyMask            = NSCommandKeyMask
+};
 
 /**
  `CNGridView` is a (wanna be) replacement for NSCollectionView. It has full delegate and dataSource support with method calls like known from NSTableView/UITableView.
@@ -165,6 +168,11 @@
 
  */
 - (void)selectAllItems;
+
+/** 
+ 
+ */
+- (void)selectItemAtIndex:(NSUInteger)selectedItemIndex usingModifierFlags:(NSUInteger)modifierFlags;
 
 /**
  ...

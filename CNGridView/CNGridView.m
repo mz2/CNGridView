@@ -514,13 +514,13 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
             if (!gridViewItem.selected) {
                 [self selectItem:gridViewItem];
             } else {
-                if (modifierFlags & NSCommandKeyMask) {
+                if (modifierFlags & CNGridViewModifierFlagCommandKeyMask) {
                     [self deSelectItem:gridViewItem];
                 }
             }
 
         } else {
-            if (modifierFlags & NSCommandKeyMask) {
+            if (modifierFlags & CNGridViewModifierFlagCommandKeyMask) {
                 if (gridViewItem.selected) {
                     [self deSelectItem:gridViewItem];
                 } else {
@@ -741,7 +741,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
             CNGridViewItem *selectedItem = [selectedItems objectForKey:[NSNumber numberWithInteger:itemIndex]];
             CNGridViewItem *itemToSelect = [keyedVisibleItems objectForKey:[NSNumber numberWithInteger:itemIndex]];
             [selectedItemsBySelectionFrame setObject:itemToSelect forKey:[NSNumber numberWithInteger:itemToSelect.index]];
-            if (modifierFlags & NSCommandKeyMask) {
+            if (modifierFlags & CNGridViewModifierFlagCommandKeyMask) {
                 itemToSelect.selected = ([itemToSelect isEqual:selectedItem] ? NO : YES);
             } else {
                 itemToSelect.selected = YES;
