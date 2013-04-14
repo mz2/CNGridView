@@ -194,8 +194,8 @@ typedef NS_ENUM(NSInteger, CNGridViewModifierFlag) {
  */
 - (NSArray *)selectedItems;
 
-
-
+// Made public to help subclassing.
+- (void)setupDefaults;
 
 #pragma mark - Reloading GridView Data
 /** @name  Reloading GridView Data */
