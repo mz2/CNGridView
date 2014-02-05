@@ -265,7 +265,8 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 - (void)refreshGridViewAnimated:(BOOL)animated
 {
     NSRect scrollRect = [self frame];
-    scrollRect.size.width = scrollRect.size.width;
+    //scrollRect.size.width = scrollRect.size.width;
+    scrollRect.size.width = [self clippedRect].size.width;
     scrollRect.size.height = [self allOverRowsInGridView] * self.itemSize.height;
     [super setFrame:scrollRect];
 
