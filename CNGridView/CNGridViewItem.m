@@ -32,7 +32,7 @@
 #import "NSColor+CNGridViewPalette.h"
 #import "CNGridViewItemLayout.h"
 
-#import "NSString_Extensions.h"
+#import <Feather/NSString+MPExtensions.h>
 
 #if !__has_feature(objc_arc)
 #error "Please use ARC for compiling this file."
