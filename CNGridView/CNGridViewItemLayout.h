@@ -69,12 +69,12 @@ typedef enum {
 /**
  ...
  */
-@property (nonatomic, assign) NSUInteger contentInset;
+@property (nonatomic, assign) CGFloat contentInset;
 
 /**
  ...
  */
-@property (nonatomic, assign) NSUInteger itemBorderRadius;
+@property (nonatomic, assign) CGFloat itemBorderRadius;
 
 /**
  ...

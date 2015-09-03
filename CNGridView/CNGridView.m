@@ -365,7 +365,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 
     NSUInteger rangeStart = 0;
     if (clippedRect.origin.y > self.itemSize.height) {
-        rangeStart = (ceilf(clippedRect.origin.y / self.itemSize.height) * columns) - columns;
+        rangeStart = (NSUInteger)((ceil(clippedRect.origin.y / self.itemSize.height) * (CGFloat)columns) - (CGFloat)columns);
     }
     NSUInteger rangeLength = MIN(numberOfItems, (columns * rows) + columns);
     rangeLength = ((rangeStart + rangeLength) > numberOfItems ? numberOfItems - rangeStart : rangeLength);
@@ -387,21 +387,21 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 - (NSUInteger)columnsInGridView
 {
     NSRect visibleRect  = [self clippedRect];
-    NSUInteger columns = floorf((float)NSWidth(visibleRect) / self.itemSize.width);
+    NSUInteger columns = (NSUInteger)floor(NSWidth(visibleRect) / self.itemSize.width);
     columns = (columns < 1 ? 1 : columns);
     return columns;
 }
 
 - (NSUInteger)allOverRowsInGridView
 {
-    NSUInteger allOverRows = ceilf((float)numberOfItems / [self columnsInGridView]);
+    NSUInteger allOverRows = (NSUInteger)ceil(numberOfItems / [self columnsInGridView]);
     return allOverRows;
 }
 
 - (NSUInteger)visibleRowsInGridView
 {
     NSRect visibleRect  = [self clippedRect];
-    NSUInteger visibleRows = ceilf((float)NSHeight(visibleRect) / self.itemSize.height);
+    NSUInteger visibleRows = (NSUInteger)ceil(NSHeight(visibleRect) / self.itemSize.height);
     return visibleRows;
 }
 
@@ -418,8 +418,8 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
         indexForItemAtLocation = NSNotFound;
 
     } else {
-        NSUInteger currentColumn = floor(point.x / self.itemSize.width);
-        NSUInteger currentRow = floor(point.y / self.itemSize.height);
+        NSUInteger currentColumn = (NSUInteger)floor(point.x / self.itemSize.width);
+        NSUInteger currentRow = (NSUInteger)floor(point.y / self.itemSize.height);
         indexForItemAtLocation = currentRow * [self columnsInGridView] + currentColumn;
         indexForItemAtLocation = (indexForItemAtLocation > (numberOfItems - 1) ? NSNotFound : indexForItemAtLocation);
     }
@@ -429,8 +429,8 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 - (CNItemPoint)locationForItemAtIndex:(NSUInteger)itemIndex
 {
     NSUInteger columnsInGridView = [self columnsInGridView];
-    NSUInteger row = floor(itemIndex / columnsInGridView) + 1;
-    NSUInteger column = itemIndex - floor((row -1) * columnsInGridView) + 1;
+    NSUInteger row = (NSUInteger)floor(itemIndex / columnsInGridView) + 1;
+    NSUInteger column = (NSUInteger)(itemIndex - floor((row - 1) * columnsInGridView) + 1);
     CNItemPoint location = CNMakeItemPoint(column, row);
     return location;
 }
@@ -1065,7 +1065,7 @@ CNItemPoint CNMakeItemPoint(NSUInteger aColumn, NSUInteger aRow) {
 
 - (void)drawRect:(NSRect)rect
 {
-    NSRect dirtyRect = NSMakeRect(0.5, 0.5, floorf(NSWidth(self.bounds))-1, floorf(NSHeight(self.bounds))-1);
+    NSRect dirtyRect = NSMakeRect(0.5, 0.5, floor(NSWidth(self.bounds)) - 1, floor(NSHeight(self.bounds))-1);
     NSBezierPath *selectionFrame = [NSBezierPath bezierPathWithRoundedRect:dirtyRect xRadius:0 yRadius:0];
 
     [[[NSColor blackColor] colorWithAlphaComponent:0.15] setFill];
