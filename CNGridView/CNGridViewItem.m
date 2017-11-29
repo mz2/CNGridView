@@ -143,9 +143,8 @@ extern NSString *CNGridViewDeSelectAllItemsNotification;
     self.selected = NO;
     self.selectable = YES;
     self.hovered = NO;
+    [super prepareForReuse];
 }
-
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ViewDrawing
